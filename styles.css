@@ -1,0 +1,679 @@
+/* ============================================================================
+   WatchGuard ProfitStack Calculator - Styles
+   Based on WatchGuard brand guidelines
+   ============================================================================ */
+
+/* Core WatchGuard Color Palette */
+:root {
+  --wg-red: #E81410;
+  --wg-red-dark: #B32317;
+  --wg-dark-blue: #002663;
+  --wg-blue: #035996;
+  --wg-dark-gray: #333333;
+  --wg-gray: #808080;
+  --wg-light-gray: #F5F5F5;
+  --wg-white: #FFFFFF;
+  --wg-green: #2A8F48;
+  --wg-border: #E0E0E0;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+/* ============================================================================
+   Global Styles
+   ============================================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--wg-light-gray);
+  color: var(--wg-dark-gray);
+  line-height: 1.6;
+}
+
+/* ============================================================================
+   Navigation Bar
+   ============================================================================ */
+
+.nav-bar {
+  background-color: var(--wg-white);
+  border-bottom: 1px solid var(--wg-border);
+  padding: 12px var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-bar .logo {
+  height: 32px;
+}
+
+/* ============================================================================
+   Hero Section
+   ============================================================================ */
+
+.hero {
+  background-color: var(--wg-red);
+  color: var(--wg-white);
+  padding: 48px var(--spacing-lg);
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 18px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ============================================================================
+   Main Content
+   ============================================================================ */
+
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px var(--spacing-lg);
+}
+
+.main-content h2 {
+  margin-top: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--wg-dark-gray);
+}
+
+.main-content > p {
+  max-width: 720px;
+  font-size: 16px;
+  color: var(--wg-gray);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ============================================================================
+   Calculator Layout
+   ============================================================================ */
+
+.calculator-wrapper {
+  display: flex;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+}
+
+.calculator-inputs,
+.calculator-results {
+  flex: 1;
+  min-width: 300px;
+  background-color: var(--wg-white);
+  border: 1px solid var(--wg-red);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.calculator-results {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: var(--spacing-lg);
+  align-self: flex-start;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+
+/* ============================================================================
+   Form Sections
+   ============================================================================ */
+
+.form-section {
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 1px solid var(--wg-border);
+}
+
+.form-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-title {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--wg-dark-blue);
+}
+
+.section-description {
+  font-size: 14px;
+  color: var(--wg-gray);
+  margin-bottom: var(--spacing-md);
+}
+
+/* ============================================================================
+   Form Elements
+   ============================================================================ */
+
+label {
+  display: block;
+  margin-top: var(--spacing-md);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--wg-dark-gray);
+}
+
+.required {
+  color: var(--wg-red);
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: var(--spacing-xs);
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--wg-blue);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  margin-left: var(--spacing-xs);
+  color: var(--wg-red);
+  font-weight: 700;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  border: 1px solid var(--wg-red);
+  border-radius: 50%;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 125%;
+  background-color: var(--wg-dark-gray);
+  color: var(--wg-white);
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: normal;
+  max-width: 220px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 100;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/* ============================================================================
+   Category Sections
+   ============================================================================ */
+
+.category-section {
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid var(--wg-border);
+  border-radius: var(--radius-md);
+  background-color: var(--wg-white);
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  background-color: var(--wg-light-gray);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.category-header:hover {
+  background-color: #ebebeb;
+}
+
+.category-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--wg-dark-blue);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.tool-count {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--wg-gray);
+  margin-left: var(--spacing-sm);
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--wg-gray);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  transition: transform 0.2s ease;
+}
+
+.toggle-btn.collapsed {
+  transform: rotate(-90deg);
+}
+
+.category-content {
+  padding: var(--spacing-md);
+}
+
+.category-content.collapsed {
+  display: none;
+}
+
+.category-description {
+  font-size: 13px;
+  color: var(--wg-gray);
+  margin-bottom: var(--spacing-md);
+  font-style: italic;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 14px;
+  color: var(--wg-gray);
+  margin-bottom: var(--spacing-md);
+  font-weight: 400;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+/* ============================================================================
+   Tool Cards
+   ============================================================================ */
+
+.tools-container {
+  margin-bottom: var(--spacing-md);
+}
+
+.tool-card {
+  background-color: #fafafa;
+  border: 1px solid var(--wg-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+}
+
+.tool-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.tool-number {
+  font-weight: 600;
+  color: var(--wg-dark-blue);
+  font-size: 14px;
+}
+
+.remove-tool-btn {
+  background: none;
+  border: none;
+  color: var(--wg-red);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-tool-btn:hover {
+  color: var(--wg-red-dark);
+}
+
+.tool-card label {
+  margin-top: var(--spacing-sm);
+}
+
+/* Add Tool Button */
+.add-tool-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--wg-white);
+  border: 2px dashed var(--wg-blue);
+  color: var(--wg-blue);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.add-tool-btn:hover {
+  background-color: var(--wg-blue);
+  color: var(--wg-white);
+  border-style: solid;
+}
+
+/* ============================================================================
+   Results Section
+   ============================================================================ */
+
+.results-content {
+  flex: 1;
+}
+
+.results-placeholder {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--wg-gray);
+}
+
+/* Hero Metrics */
+.hero-metrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.metric-card {
+  background-color: var(--wg-light-gray);
+  border: 1px solid var(--wg-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  text-align: center;
+}
+
+.metric-card.savings-card {
+  background-color: #e8f5e9;
+  border-color: var(--wg-green);
+}
+
+.metric-label {
+  font-size: 14px;
+  color: var(--wg-gray);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+}
+
+.metric-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--wg-dark-blue);
+}
+
+.savings-card .metric-value {
+  color: var(--wg-green);
+}
+
+/* Comparison Table */
+.comparison-table {
+  margin-bottom: var(--spacing-lg);
+}
+
+.comparison-title {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--wg-dark-blue);
+}
+
+.comparison-grid {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.comparison-grid th,
+.comparison-grid td {
+  padding: var(--spacing-sm);
+  text-align: right;
+  border-bottom: 1px solid var(--wg-border);
+}
+
+.comparison-grid th:first-child,
+.comparison-grid td:first-child {
+  text-align: left;
+  font-weight: 500;
+}
+
+.comparison-grid th {
+  background-color: var(--wg-light-gray);
+  font-weight: 600;
+  color: var(--wg-dark-blue);
+}
+
+.comparison-grid .total-row {
+  background-color: #f9f9f9;
+  font-weight: 600;
+}
+
+/* Chart */
+.chart-title {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--wg-dark-blue);
+}
+
+#chartContainer {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--wg-light-gray);
+  border-radius: var(--radius-sm);
+}
+
+/* Benefits */
+.benefits-callouts {
+  margin-bottom: var(--spacing-lg);
+}
+
+.benefits-title {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--wg-dark-blue);
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefits-list li {
+  padding: var(--spacing-sm) 0;
+  font-size: 14px;
+  color: var(--wg-dark-gray);
+}
+
+.benefits-list li::before {
+  content: "✓ ";
+  color: var(--wg-green);
+  font-weight: 700;
+  margin-right: var(--spacing-sm);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--wg-border);
+}
+
+.download-button,
+.secondary-button {
+  padding: 12px 16px;
+  border: none;
+  font-weight: 600;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.download-button {
+  background-color: var(--wg-red);
+  color: var(--wg-white);
+}
+
+.download-button:hover {
+  background-color: var(--wg-red-dark);
+}
+
+.secondary-button {
+  background-color: var(--wg-white);
+  color: var(--wg-red);
+  border: 1px solid var(--wg-red);
+}
+
+.secondary-button:hover {
+  background-color: var(--wg-light-gray);
+}
+
+/* ============================================================================
+   Footer
+   ============================================================================ */
+
+.footer {
+  background-color: var(--wg-dark-gray);
+  color: var(--wg-white);
+  padding: var(--spacing-lg);
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer p {
+  margin: var(--spacing-xs) 0;
+  font-size: 14px;
+}
+
+.disclaimer {
+  font-size: 12px;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* ============================================================================
+   Responsive Design
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+  .calculator-wrapper {
+    flex-direction: column;
+  }
+
+  .calculator-results {
+    position: static;
+    max-height: none;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .calculator-inputs,
+  .calculator-results {
+    padding: var(--spacing-md);
+  }
+
+  .hero {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .metric-value {
+    font-size: 24px;
+  }
+}
+
+/* ============================================================================
+   Utility Classes
+   ============================================================================ */
+
+.hidden {
+  display: none !important;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

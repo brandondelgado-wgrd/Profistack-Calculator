@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WatchGuard ProfitStack Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Watchguard_logo.svg" alt="WatchGuard logo">
+    <div></div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>WatchGuard ProfitStack Calculator</h1>
+    <p>Discover your savings by consolidating security tools onto the WatchGuard Unified Security Platform</p>
+  </section>
+
+  <!-- Main Content -->
+  <section class="main-content">
+    <h2>Calculate Your Total Cost of Ownership (TCO) Savings</h2>
+    <p>Enter your current security stack details below to see how much you can save by consolidating to WatchGuard's unified platform.</p>
+
+    <!-- Calculator Wrapper -->
+    <div class="calculator-wrapper">
+
+      <!-- Left Column: Input Forms -->
+      <div class="calculator-inputs">
+
+        <!-- MSP Profile Section -->
+        <div class="form-section">
+          <h3 class="section-title">MSP Profile</h3>
+
+          <label for="mspName">MSP Name <span class="required">*</span></label>
+          <input type="text" id="mspName" placeholder="Enter MSP name" required />
+
+          <label for="region">Region <span class="required">*</span></label>
+          <select id="region" required>
+            <option value="">Select region</option>
+            <option value="north-america">North America</option>
+            <option value="emea">EMEA</option>
+            <option value="apac">APAC</option>
+            <option value="latam">LATAM</option>
+          </select>
+
+          <label for="numEndpoints">Number of Managed Endpoints <span class="required">*</span></label>
+          <input type="number" id="numEndpoints" min="1" placeholder="500" required />
+
+          <label for="numClients">Number of Managed Clients</label>
+          <input type="number" id="numClients" min="0" placeholder="Optional" />
+
+          <label for="laborRate">Technician Hourly Rate (USD)
+            <span class="tooltip" data-tooltip="Average hourly rate for your technical staff. Default: $85/hour">?</span>
+          </label>
+          <input type="number" id="laborRate" min="0" step="1" value="85" />
+
+          <button type="button" id="manualCalculate" style="margin-top: 16px; padding: 10px; background: #035996; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-weight: 600;">
+            🧮 Calculate Now (Debug)
+          </button>
+        </div>
+
+        <!-- Current Stack Categories -->
+        <div class="form-section">
+          <h3 class="section-title">Current Security Stack</h3>
+          <p class="section-description">Add the tools you currently use in each category. You can add multiple tools per category.</p>
+        </div>
+
+        <!-- Category 1: Network Security -->
+        <div class="category-section" data-category="network">
+          <div class="category-header" data-action="toggle-category">
+            <h4 class="category-title">
+              Network Security
+              <span class="tool-count" data-category="network">(0 tools)</span>
+            </h4>
+            <button type="button" class="toggle-btn">▼</button>
+          </div>
+          <div class="category-content collapsed">
+            <p class="category-description">Firewall, SASE, NDR (e.g., FortiGate, Sophos XG, Palo Alto)</p>
+            <label class="checkbox-label">
+              <input type="checkbox" class="category-skip" data-category="network" />
+              Not using this category
+            </label>
+            <div class="tools-container" id="network-tools">
+              <!-- Tools will be added dynamically here -->
+            </div>
+            <button type="button" class="add-tool-btn" data-category="network">+ Add Network Security Tool</button>
+          </div>
+        </div>
+
+        <!-- Category 2: Endpoint Security -->
+        <div class="category-section" data-category="endpoint">
+          <div class="category-header" data-action="toggle-category">
+            <h4 class="category-title">
+              Endpoint Security
+              <span class="tool-count" data-category="endpoint">(0 tools)</span>
+            </h4>
+            <button type="button" class="toggle-btn">▼</button>
+          </div>
+          <div class="category-content collapsed">
+            <p class="category-description">AV, EDR, XDR (e.g., Sophos Intercept X, CrowdStrike, SentinelOne)</p>
+            <label class="checkbox-label">
+              <input type="checkbox" class="category-skip" data-category="endpoint" />
+              Not using this category
+            </label>
+            <div class="tools-container" id="endpoint-tools">
+              <!-- Tools will be added dynamically here -->
+            </div>
+            <button type="button" class="add-tool-btn" data-category="endpoint">+ Add Endpoint Security Tool</button>
+          </div>
+        </div>
+
+        <!-- Category 3: Identity & Access -->
+        <div class="category-section" data-category="identity">
+          <div class="category-header" data-action="toggle-category">
+            <h4 class="category-title">
+              Identity & Access
+              <span class="tool-count" data-category="identity">(0 tools)</span>
+            </h4>
+            <button type="button" class="toggle-btn">▼</button>
+          </div>
+          <div class="category-content collapsed">
+            <p class="category-description">SSO, MFA, Authentication (e.g., Duo, Okta, Microsoft MFA)</p>
+            <label class="checkbox-label">
+              <input type="checkbox" class="category-skip" data-category="identity" />
+              Not using this category
+            </label>
+            <div class="tools-container" id="identity-tools">
+              <!-- Tools will be added dynamically here -->
+            </div>
+            <button type="button" class="add-tool-btn" data-category="identity">+ Add Identity & Access Tool</button>
+          </div>
+        </div>
+
+        <!-- Category 4: Managed Services -->
+        <div class="category-section" data-category="services">
+          <div class="category-header" data-action="toggle-category">
+            <h4 class="category-title">
+              Managed Services
+              <span class="tool-count" data-category="services">(0 tools)</span>
+            </h4>
+            <button type="button" class="toggle-btn">▼</button>
+          </div>
+          <div class="category-content collapsed">
+            <p class="category-description">MDR, MNDR (e.g., Huntress, Arctic Wolf, Red Canary)</p>
+            <label class="checkbox-label">
+              <input type="checkbox" class="category-skip" data-category="services" />
+              Not using this category
+            </label>
+            <div class="tools-container" id="services-tools">
+              <!-- Tools will be added dynamically here -->
+            </div>
+            <button type="button" class="add-tool-btn" data-category="services">+ Add Managed Service</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Results Dashboard -->
+      <div class="calculator-results">
+        <h3 class="section-title">Your Savings Analysis</h3>
+
+        <div id="resultsSummary" class="results-content">
+          <div class="results-placeholder">
+            <p>Fill out the MSP profile and add at least one security tool to see your potential savings.</p>
+          </div>
+        </div>
+
+        <!-- Hero Metrics -->
+        <div id="heroMetrics" class="hero-metrics" style="display: none;">
+          <div class="metric-card savings-card">
+            <div class="metric-label">Annual Savings</div>
+            <div class="metric-value" id="annualSavings">$0</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Savings Percentage</div>
+            <div class="metric-value" id="savingsPercent">0%</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">3-Year Total Savings</div>
+            <div class="metric-value" id="threeYearSavings">$0</div>
+          </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div id="comparisonTable" class="comparison-table" style="display: none;">
+          <h4 class="comparison-title">TCO Comparison</h4>
+          <table class="comparison-grid">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Current Stack</th>
+                <th>Unified WatchGuard</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>License Costs</td>
+                <td id="currentLicense">$0</td>
+                <td id="unifiedLicense">$0</td>
+              </tr>
+              <tr>
+                <td>Labor Costs</td>
+                <td id="currentLabor">$0</td>
+                <td id="unifiedLabor">$0</td>
+              </tr>
+              <tr class="total-row">
+                <td><strong>Total Annual TCO</strong></td>
+                <td id="currentTotal"><strong>$0</strong></td>
+                <td id="unifiedTotal"><strong>$0</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Chart Container -->
+        <div id="chartContainer" style="display: none;">
+          <h4 class="chart-title">Cost Comparison by Category</h4>
+          <canvas id="comparisonChart"></canvas>
+        </div>
+
+        <!-- Benefits Callouts -->
+        <div id="benefitsCallouts" class="benefits-callouts" style="display: none;">
+          <h4 class="benefits-title">Key Benefits</h4>
+          <ul class="benefits-list">
+            <li><strong id="vendorsReduced">0</strong> vendors reduced to 1</li>
+            <li><strong id="portalsReduced">0</strong> admin portals reduced to 1</li>
+            <li><strong id="hoursSaved">0</strong> hours saved per month</li>
+            <li>Unified management console</li>
+          </ul>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons" style="display: none;" id="actionButtons">
+          <button id="downloadPDF" class="download-button" type="button">Download PDF Report</button>
+          <button id="startNew" class="secondary-button" type="button">Start New Audit</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>WatchGuard ProfitStack Calculator - MVP v1.0</p>
+    <p class="disclaimer">Pricing shown uses placeholder values. Final calculations require validation with Finance team.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="data/mappings.js"></script>
+  <script src="calculator.js"></script>
+</body>
+</html>
