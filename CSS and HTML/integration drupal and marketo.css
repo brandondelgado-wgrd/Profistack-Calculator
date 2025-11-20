@@ -1,0 +1,43 @@
+/* watchguard-page-overrides.css */
+
+/* Intro section styling */
+.intro--calc {
+  text-align: center;
+}
+
+.intro--calc h2 {
+  margin-top: 0;
+}
+
+.intro--calc p {
+  font-size: 1.3rem;
+  padding: 1rem 3rem;
+}
+
+/* Marketo form integration - only if using Marketo */
+.paragraph--type--marketo-form .mktoForm {
+  padding: 20px 0;
+  text-align: center;
+  width: 100% !important;
+  background: #666;
+  border: 0;
+}
+
+.paragraph--type--marketo-form .mktoRequiredField .mktoLabel {
+  color: white;
+}
+
+/* Drupal field adjustments - only if using Drupal */
+.field--name-field-pre-form-text h3 {
+  font-size: 2.5rem;
+  padding: 4rem 1rem 1rem 0;
+}
+
+.field--name-field-pre-form-text p {
+  font-size: 1.5rem;
+}
+
+.field--name-field-post-form-text h2 {
+  text-align: center;
+  padding: 1rem;
+}

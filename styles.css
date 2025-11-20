@@ -432,7 +432,7 @@ input::placeholder {
 /* Hero Metrics */
 .hero-metrics {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-lg);
 }
@@ -662,6 +662,11 @@ input::placeholder {
 
   .metric-value {
     font-size: 24px;
+  }
+
+  /* Stack metrics vertically on mobile */
+  .hero-metrics {
+    grid-template-columns: 1fr;
   }
 }
 
