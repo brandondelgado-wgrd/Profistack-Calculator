@@ -871,7 +871,7 @@ function generatePDF() {
     return;
   }
 
-  alert('PDF generation will be implemented in Week 5 using jsPDF. For now, you can print this page (Ctrl+P / Cmd+P) to save as PDF.');
+  alert('PDF generation is not implemented yet. For now, you can print this page (Ctrl+P / Cmd+P) to save as PDF.');
 
   // TODO: Implement jsPDF generation
   // See ROI calculator script.js for reference (lines 530-926)
